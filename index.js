@@ -3,32 +3,47 @@ const cors = require('cors');
 const mysql = require('mysql');
 
 
+
+
 const app = express();
+app.use(cors());
+
 
 const SELECT_ALL_CUSTOMERS_QUERY = 'SELECT * FROM customers';
 
 const connection = mysql.createConnection({
     host: 'localhost',
-    user:'titusbuchananjr',
-    password:'Titus908!',
+    user:'root',
+    password:'password',
     database:'sql_store'
-})
+});
+
+
 
 connection.connect(err => {
-    if(err) {
-        return err;
+    if (err) {
+        console.log(err);
+    } else {
+        console.log('Connected to the MySQL server');
     }
 });
 
-console.log(connection);
 
-app.use(cors());
+
+
 
 const PORT = process.env.PORT || 4000;
 
 
 app.get('/', (req,res) => {
-    res.send('Go to customers page')
+    
+    const sqlInsert = "INSERT INTO customers (first_name, last_name) VALUES ('TEEZUS','BUCHANAN')"
+
+    connection.query(sqlInsert, (err,result) => {
+        res.send(result)
+    })
+    
+    
 })
 
 app.get('/customers', (req,res) => {
@@ -43,13 +58,7 @@ app.get('/customers', (req,res) => {
         }
     });
 })
-connection.connect(err => {
-    if (err) {
-        console.log(err);
-    } else {
-        console.log('Connected to the MySQL server');
-    }
-});
+
 
 
 
