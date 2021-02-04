@@ -8,7 +8,7 @@ var con = mysql.createConnection({
     database:'sql_store'
 });
 
-console.log(con);
+
 
 con.connect(function(err) {
   if (err) throw err;
