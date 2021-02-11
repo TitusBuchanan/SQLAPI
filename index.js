@@ -24,7 +24,7 @@ connection.connect(err => {
     if (err) {
         console.log(err);
     } else {
-        console.log('Connected to MySQL server');
+        console.log('Connectection to MySQL server');
     }
 });
 
