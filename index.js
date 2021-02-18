@@ -38,7 +38,6 @@ const PORT = process.env.PORT || 4000;
 
 app.get('/', (req,res) => {
     
-    const sqlInsert = "INSERT INTO customers (first_name, last_name) VALUES ('TEEZUS','BUCHANAN')"
 
     connection.query(sqlInsert, (err,result) => {
         res.send(result)
