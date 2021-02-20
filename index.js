@@ -9,6 +9,7 @@ const app = express();
 app.use(cors());
 
 
+const SELECT_ALL_CUSTOMERS_QUERY = 'SELECT * FROM customers';
 
 const connection = mysql.createConnection({
     host: 'localhost',
